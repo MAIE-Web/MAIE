@@ -158,7 +158,7 @@ document.getElementById("backToSem").addEventListener("click", ()=>{
 function renderModules(sem){
   container.innerHTML="";
 
-  const allowedModules = [ "Analyse fonctionnelle" , "Cryptographie"]; 
+  const allowedModules = [ "Cryptographie"]; 
 
   semesters[sem].forEach(m=>{
     const card = document.createElement("div");
@@ -270,4 +270,5 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
 </body>
 
 </html>
+
 
