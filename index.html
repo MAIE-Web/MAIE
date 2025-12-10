@@ -25,6 +25,59 @@ h1 { text-align:center; font-size:3em; margin:40px 0 20px 0; text-shadow:0 0 15p
 .card { background: rgba(255,255,255,0.9); border-radius:15px; padding:25px; text-align:center; position:relative; overflow:hidden; box-shadow:0 0 15px rgba(0,102,204,0.3); transition:0.3s; }
 .card:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 0 40px rgba(0,102,204,0.5); }
 .card h3 { margin-bottom:15px; font-size:1.4em; color:#003366; }
+
+/* Style spécial pour le module Présentations */
+.card.presentations-card { 
+    background: linear-gradient(135deg, #ffc266, #ff9933);
+    border: 3px solid #ff6600;
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.4);
+}
+.card.presentations-card h3 { 
+    color: #cc3300;
+    text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+}
+
+/* Style pour le bouton Présentations */
+.presentations-btn { 
+    background: linear-gradient(90deg, #ff9933, #ff6600);
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: 0.3s;
+    border: 2px solid #ff3300;
+    cursor: pointer;
+    border: none;
+}
+.presentations-btn:hover { 
+    background: linear-gradient(90deg, #ff6600, #cc3300);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+}
+
+/* Dropdown pour les présentations */
+.presentations-dropdown { 
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+.presentations-dropdown a { 
+    background: #ffe0cc;
+    color: #cc3300;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #ff9933;
+}
+.presentations-dropdown a:hover { 
+    background: #ffcc99;
+}
+
 .button-group { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
 .btn { background:linear-gradient(90deg,#66ccff,#0099ff); color:#fff; text-decoration:none; padding:8px 15px; border-radius:8px; font-weight:600; transition:0.3s; border:none; cursor:pointer; }
 .btn:hover {background:#003366;}
@@ -42,7 +95,7 @@ footer p {margin:5px 0;}
 
 <div id="loginPage" class="login-box">
   <h1>Σ Bibliothèque MAIE ∫</h1>
-  <input type="text" id="usernameInput" placeholder="Nom d’utilisateur" required>
+  <input type="text" id="usernameInput" placeholder="Nom d'utilisateur" required>
   <input type="password" id="passwordInput" placeholder="Mot de passe" required>
   <button id="loginBtn">Se connecter</button>
   <div class="message-box" id="loginMessage"></div>
@@ -119,7 +172,11 @@ const semesters = {
     {name:"Méthodes numériques", cours:["MN-Chap1.pdf"], td:["MN-TD1.pdf","MN-TD2.pdf","MN-TD3.pdf","MN-TD4.pdf"]},
     {name:"Probabilités & statistique inférentielle", cours:["PSI-Chap1.pdf"], td:["PSI-TD1.pdf","PSI-TD2.pdf","PSI-TD3.pdf","PSI-TD4.pdf"]},
     {name:"Mathématiques pour l'IA", cours:["MIA-Chap1.pdf","MIA-Chap2.pdf","MIA-Chap3.pdf","MIA-Chap4.pdf"], td:["MIA-TD1.pdf","MIA-TD2.pdf","MIA-TD3.pdf","MIA-TD4.pdf"]},
-    {name:"TICE & communication scientifique", cours:["TICE-Chap1.pdf","TICE-Chap2.pdf","TICE-Chap3.pdf","TICE-Chap4.pdf"], td:["TICE-TD1.pdf","TICE-TD2.pdf","TICE-TD3.pdf","TICE-TD4.pdf"]}
+    {name:"TICE & communication scientifique", cours:["TICE-Chap1.pdf","TICE-Chap2.pdf","TICE-Chap3.pdf","TICE-Chap4.pdf"], td:["TICE-TD1.pdf","TICE-TD2.pdf","TICE-TD3.pdf","TICE-TD4.pdf"]},
+    // Module Présentations pour Semestre 1
+    {name:"Présentations", isSpecial: true, presentations: [
+      "Présentation1.pdf", "Présentation2.pdf"
+    ]}
   ],
   2:[
     {name:"Analyse harmonique appliquée", cours:["AHA-Chap1.pdf","AHA-Chap2.pdf","AHA-Chap3.pdf","AHA-Chap4.pdf"], td:["AHA-TD1.pdf","AHA-TD2.pdf","AHA-TD3.pdf","AHA-TD4.pdf"]},
@@ -128,7 +185,11 @@ const semesters = {
     {name:"Python pour la modélisation", cours:["PY-Chap1.pdf","PY-Chap2.pdf","PY-Chap3.pdf","PY-Chap4.pdf"], td:["PY-TD1.pdf","PY-TD2.pdf","PY-TD3.pdf","PY-TD4.pdf"]},
     {name:"Analyse convexe & optimisation", cours:["ACO-Chap1.pdf","ACO-Chap2.pdf","ACO-Chap3.pdf","ACO-Chap4.pdf"], td:["ACO-TD1.pdf","ACO-TD2.pdf","ACO-TD3.pdf","ACO-TD4.pdf"]},
     {name:"Culture entrepreneuriale", cours:["CE-Chap1.pdf","CE-Chap2.pdf","CE-Chap3.pdf","CE-Chap4.pdf"], td:["CE-TD1.pdf","CE-TD2.pdf","CE-TD3.pdf","CE-TD4.pdf"]},
-    {name:"Psychologie de l'intelligence", cours:["PI-Chap1.pdf","PI-Chap2.pdf","PI-Chap3.pdf","PI-Chap4.pdf"], td:["PI-TD1.pdf","PI-TD2.pdf","PI-TD3.pdf","PI-TD4.pdf"]}
+    {name:"Psychologie de l'intelligence", cours:["PI-Chap1.pdf","PI-Chap2.pdf","PI-Chap3.pdf","PI-Chap4.pdf"], td:["PI-TD1.pdf","PI-TD2.pdf","PI-TD3.pdf","PI-TD4.pdf"]},
+    // Module Présentations pour Semestre 2
+    {name:"Présentations", isSpecial: true, presentations: [
+   
+    ]}
   ],
   3:[
     {name:"Analyse de Fourier Clifford", cours:["AFC-Chap1.pdf","AFC-Chap2.pdf","AFC-Chap3.pdf","AFC-Chap4.pdf"], td:["AFC-TD1.pdf","AFC-TD2.pdf","AFC-TD3.pdf","AFC-TD4.pdf"]},
@@ -137,7 +198,11 @@ const semesters = {
     {name:"Théorie des codes", cours:["TC-Chap1.pdf","TC-Chap2.pdf","TC-Chap3.pdf","TC-Chap4.pdf"], td:["TC-TD1.pdf","TC-TD2.pdf","TC-TD3.pdf","TC-TD4.pdf"]},
     {name:"Cryptographie", cours:["CRY-Chap1.pdf","CRY-Chap2.pdf","CRY-Chap3.pdf","CRY-Chap4.pdf"], td:["CRY-TD1.pdf","CRY-TD2.pdf","CRY-TD3.pdf","CRY-TD4.pdf"]},
     {name:"Analyse numérique avancée", cours:["ANA-Chap1.pdf","ANA-Chap2.pdf","ANA-Chap3.pdf","ANA-Chap4.pdf"], td:["ANA-TD1.pdf","ANA-TD2.pdf","ANA-TD3.pdf","ANA-TD4.pdf"]},
-    {name:"Compétences numériques", cours:["CN-Chap1.pdf","CN-Chap2.pdf","CN-Chap3.pdf","CN-Chap4.pdf"], td:["CN-TD1.pdf","CN-TD2.pdf","CN-TD3.pdf","CN-TD4.pdf"]}
+    {name:"Compétences numériques", cours:["CN-Chap1.pdf","CN-Chap2.pdf","CN-Chap3.pdf","CN-Chap4.pdf"], td:["CN-TD1.pdf","CN-TD2.pdf","CN-TD3.pdf","CN-TD4.pdf"]},
+    // Module Présentations pour Semestre 3
+    {name:"Présentations", isSpecial: true, presentations: [
+      
+    ]}
   ]
 };
 
@@ -161,6 +226,54 @@ function renderModules(sem){
   const allowedModules = [ "Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques"]; 
 
   semesters[sem].forEach(m=>{
+    if (m.isSpecial) {
+      // Carte spéciale pour Présentations
+      const card = document.createElement("div");
+      card.className="card presentations-card";
+      
+      const title = document.createElement("h3");
+      title.textContent = m.name;
+      card.appendChild(title);
+      
+      // Bouton pour afficher les présentations
+      const presentationsBtn = document.createElement("button");
+      presentationsBtn.className = "presentations-btn";
+      presentationsBtn.textContent = "📂 Voir les présentations";
+      card.appendChild(presentationsBtn);
+      
+      // Dropdown pour les présentations
+      const dropdown = document.createElement("div");
+      dropdown.className = "presentations-dropdown";
+      
+      // Créer les liens pour les 10 présentations
+      if (m.presentations) {
+        m.presentations.forEach((presentation, index) => {
+          const link = document.createElement("a");
+          link.textContent = `Présentation ${index + 1}`;
+          link.href = `files/${presentation}`;
+          link.target = "_blank";
+          dropdown.appendChild(link);
+        });
+      }
+      
+      card.appendChild(dropdown);
+      
+      // Événement pour afficher/masquer les présentations
+      presentationsBtn.addEventListener("click", () => {
+        if (dropdown.style.display === "flex") {
+          dropdown.style.display = "none";
+          presentationsBtn.textContent = "📂 Voir les présentations";
+        } else {
+          dropdown.style.display = "flex";
+          dropdown.style.flexDirection = "column";
+          presentationsBtn.textContent = "📂 Masquer les présentations";
+        }
+      });
+      
+      container.appendChild(card);
+      return;
+    }
+    
     const card = document.createElement("div");
     card.className="card";
     const title = document.createElement("h3");
@@ -247,6 +360,7 @@ function renderModules(sem){
     container.appendChild(card);
   });
 
+  // Le module Présentations sera toujours placé à la fin
   const cards = Array.from(container.children);
   const total = cards.length;
   const remainder = total % 3;
@@ -268,6 +382,4 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
 });
 </script>
 </body>
-
 </html>
-
