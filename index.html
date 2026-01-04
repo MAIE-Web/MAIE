@@ -536,7 +536,7 @@ document.getElementById("backToSem").addEventListener("click", ()=>{
 function renderModules(sem){
   container.innerHTML="";
 
-  const allowedModules = [ "Langues étrangeres";"Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques","Analyse fonctionnelle"]; 
+  const allowedModules = [ "Langues étrangeres","Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques","Analyse fonctionnelle"]; 
 
   semesters[sem].forEach(m=>{
     if (m.isSpecial) {
@@ -696,6 +696,7 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
 </script>
 </body>
 </html>
+
 
 
 
