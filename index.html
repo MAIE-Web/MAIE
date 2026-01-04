@@ -484,7 +484,7 @@ const semesters = {
     {name:"Probabilités & statistique inférentielle", cours:["PSI-Chap1.pdf","PSI-Chap2.pdf","PSI-Chap3.pdf","PSI-Chap4.pdf"], td:["PSI-TD1.pdf","PSI-TD2.pdf","PSI-TD3.pdf","PSI-TD4.pdf"]},
     {name:"Mathématiques pour l'IA", cours:["MIA-Chap1.pdf","MIA-Chap2.pdf","MIA-Chap3.pdf","MIA-Chap4.pdf"], td:["MIA-TD1.pdf","MIA-TD2.pdf","MIA-TD3.pdf","MIA-TD4.pdf"]},
     {name:"TICE & communication scientifique", cours:["TICE-Chap1.pdf","TICE-Chap2.pdf","TICE-Chap3.pdf","TICE-Chap4.pdf"], td:["TICE-TD1.pdf","TICE-TD2.pdf","TICE-TD3.pdf","TICE-TD4.pdf"]},
-    {name:"Langues", cours:["LG-Chap1.pdf","LG-Chap2.pdf","LG-Chap3.pdf","LG-Chap4.pdf"], td:[]},
+    {name:"Langues étrangeres", cours:["LG-Chap1.pdf","LG-Chap2.pdf","LG-Chap3.pdf","LG-Chap4.pdf"], td:[]},
 
       // Module Présentations pour Semestre 1
     {name:"Présentations", isSpecial: true, presentations: [
@@ -536,7 +536,7 @@ document.getElementById("backToSem").addEventListener("click", ()=>{
 function renderModules(sem){
   container.innerHTML="";
 
-  const allowedModules = [ "Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques","Analyse fonctionnelle"]; 
+  const allowedModules = [ "Langues étrangeres";"Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques","Analyse fonctionnelle"]; 
 
   semesters[sem].forEach(m=>{
     if (m.isSpecial) {
@@ -696,6 +696,7 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
 </script>
 </body>
 </html>
+
 
 
 
